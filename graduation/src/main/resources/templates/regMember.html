@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Food Order Page</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="25">
+    <div class="container" style="margin-top:100px;">
+        <p class="h3">요식업 주문 페이지에 오신 것으르 환영합니다!</p>
+        <p class="h5 text-muted" style="margin-top:10px;">주문 화면으로 넘어가기 전 예약자의 성합과 번호, 그리고 동행자 수를 남겨주세요!</p>
+        <p class="h6 text-muted" style="margin-top: 5px;">만약 이미 주문 및 결제를 진행하셨다면, 아래의 '자리 배정' 버튼을 클릭해주세요.</p>
+
+        <form class="form-control" action="#" th:action="@{/orders}" th:object="${order}" method="post">
+            <div class="form-group row" style="margin-top:30px;">
+                <span class="col-2">예약자 성함</span>
+                <input type="text" class="form-control form-control-sm col-2" th:field="*{name}">
+            </div>
+            <div class="form-group row" style="margin-top: 10px;">
+                <span class="col-2">연락처</span>
+                <input type="tel" class="form-control form-control-sm col-2" th:field="*{tel}">
+            </div>
+            <div class="form-group row" style="margin-top: 10px;">
+                <span class="col-2">인원 수</span>
+                <input type="text" class="form-control form-control-sm col-2" th:field="*{num}">명
+            </div>
+
+            <!-- Button -->
+            <div class="row" style="margin-top: 20px;">
+                <span class="col-1"></span>
+                <input type="submit" class="btn btn-outline-primary btn-sm col-2" value="주문 화면 이동"/>
+                <a data-toggle="modal" data-target="#tableChoice" class="btn btn-outline-success" style="margin-right:5px;" role="button" aria-pressed="true">자리 배정</a>
+                <input type="reset" class="btn btn-outline-danger btn-sm col-1" value="다시 작성">
+                <span class="col-3"></span>
+            </div>
+
+            <!--Modal-->
+            <div class="modal fade" id="tableChoice" tabindex="-1" role="dialog" aria-labelledby="orderConfirm">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">자리 배정</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <span class="col-3">예약자 성함</span>
+                                <input type="text" class="form-control col-6" placeholder="예약자 성함을 입력해주세요.">
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <span class="col-3">연락처</span>
+                                <input type="tel" class="form-control col-6" placeholder="연락처를 입력해주세요.">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-target="#orderConfirm" data-toggle="modal">배정 받기</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

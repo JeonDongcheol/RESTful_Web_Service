@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author  " content="">
+
+    <title>Food Order Page</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        #menuCard{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="25">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--Member Name -->
+    <a href="#" class="navbar-brand" th:text="${order.name} + '님 환영합니다!'">홍길동</a>
+
+    <!-- Toggle Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuList" aria-controls="#" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Menu -->
+    <div class="collapse navbar-collapse" id="menuList">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#salad">Salad</a>
+            <a class="nav-item nav-link" href="#pasta">Pasta</a>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <form class="form-inline row">
+        <a href="/food/pay" class="btn btn-sm btn-outline-success my-2 my-sm-0 col-6" role="button">주문하기</a>
+        <a href="/food/order" class="btn btn-sm btn-outline-success col-6" role="button">이전으로</a>
+    </form>
+</nav>
+
+<!--Menu View-->
+<div class="container" style="margin-top:100px;" th:object="${menu}">
+    <!-- Salad -->
+    <p class="h3" id="salad">Salad</p>
+    <div class="card-group" id="menuCard" th:object="${salad}">
+
+        <div class="card">
+            <img class="card-img-top" src="https://imgur.com/8Ing1hF.jpg" alt="케이준 치킨 샐러드">
+            <div class="card-body">
+                <h5 class="card-title" th:text="*{chicken}">케이준 치킨 샐러드</h5>
+                <p class="card-text">영양 만점 야채들과 케이준 치킨과의 환상적인 조합!</p>
+                <p class="card-text"><small class="text-muted">13,000원</small></p>
+                <div class="form-group row">
+                    <select class="form-control col-5" th:field="*{foodNum}">
+                        <option selected>수량</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary">메뉴 담기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" src="https://imgur.com/6PZOBUj.jpg" alt="Food Image">
+            <div class="card-body">
+                <h5 class="card-title">연어 샐러드</h5>
+                <p class="card-text">싱싱한 연어와 샐러드의 환상 조합!</p>
+                <p class="card-text"><small class="text-muted">15,000원</small></p>
+                <div class="form-group row">
+                    <select class="form-control col-5" th:field="*{foodNum}">
+                        <option selected>수량</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary">메뉴 담기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card-img-top" src="https://imgur.com/HWyVVnT.jpg" alt="Food Image">
+            <div class="card-body">
+                <h5 class="card-title">케이준 치킨 샐러드</h5>
+                <p class="card-text">영양 만점 케이준 치킨 샐러드!</p>
+                <p class="card-text"><small class="text-muted">300,000원</small></p>
+                <div class="form-group row">
+                    <select class="form-control col-5" th:field="*{foodNum}">
+                        <option selected>수량</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-secondary">메뉴 담기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>
