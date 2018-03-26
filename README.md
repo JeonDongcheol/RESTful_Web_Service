@@ -7,7 +7,7 @@
 3. [__Project Describe__](#i3)
 
 ### 1. What is REST? <a name="i1"/>
-> REST에 대해서 기본 개념을 잡는다.
+> REST에 대한 기본 개념을 학습한다.
 
 ![Alt Text][rest_rogo]
 
@@ -67,7 +67,9 @@ RESTful API 개발 원칙
 3. __자기 서술적__ 이어야 한다. 데이터에 대한 Meta Data만 가지고도 어떤 종류의 Data인지, 혹은 Data를 위해서 어떤 Application을 실행해야 하는지를 알 수 있어야 한다.
 
 ### 2. Tymeleaf <a name="i2"/>
-### 3. Project Describe__] <a name="i3"/>
+> Thymeleaf에 대한 간략한 설명
+
+### 3. Project Describe__ <a name="i3"/>
 > grad_project에 대한 설명
 
 #### 프로젝트 개요
@@ -81,10 +83,10 @@ RESTful API 개발 원칙
 6. 기다리다가 본인 입장 차례가 오면 테이블 번호를 배정받는다.
 7. 배정을 받으면 테이블에서 기다렸다가 주문 요리를 받는다.
 
-
-
-
 #### Reference :
+
+- [RESTful Web Service란 무엇인가?](http://kimseunghyun76.tistory.com/18)
+
 
 [rest_rogo]:https://imgur.com/MdxQ1y7.png
 [rest_web_service]:https://imgur.com/NFnX8bt.png
