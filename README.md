@@ -62,8 +62,8 @@ RESTful API 개발 원칙
 
 3. __자기 서술적__ 이어야 한다. 데이터에 대한 Meta Data만 가지고도 어떤 종류의 Data인지, 혹은 Data를 위해서 어떤 Application을 실행해야 하는지를 알 수 있어야 한다.
 
-### 3. Tymeleaf <a name="i2"/>
-### 4. Project Describe__] <a name="i3"/>
+### 2. Tymeleaf <a name="i2"/>
+### 3. Project Describe__] <a name="i3"/>
 > grad_project에 대한 설명
 
 #### 프로젝트 개요
