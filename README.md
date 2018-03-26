@@ -3,8 +3,9 @@
 
 #### Index :
 1. [__What is REST?__](#i1)
-2. [__Thymeleaf__](#i2)
-3. [__Project Describe__](#i3)
+2. [__Thymeleaf & Spring Boot__](#i2)
+3. [__Tutorial 진행__] (#i3)
+3. [__Project__](#i4)
 
 ### 1. What is REST? <a name="i1"/>
 > REST에 대한 기본 개념을 학습한다.
@@ -66,10 +67,60 @@ RESTful API 개발 원칙
 
 3. __자기 서술적__ 이어야 한다. 데이터에 대한 Meta Data만 가지고도 어떤 종류의 Data인지, 혹은 Data를 위해서 어떤 Application을 실행해야 하는지를 알 수 있어야 한다.
 
-### 2. Tymeleaf <a name="i2"/>
-> Thymeleaf에 대한 간략한 설명
+### 2. Tymeleaf & Spring Boot <a name="i2"/>
+> REST 프로젝트 진행에서 사용할 Thymeleaf와 Spring Boot에 대한 간략한 설명
 
-### 3. Project Describe__ <a name="i3"/>
+#### Thymeleaf
+
+![Alt Text][thymeleaf_logo]
+
+[Thymeleaf 홈페이지 바로가기](https://www.thymeleaf.org/index.html)
+
+Thymeleaf는 새련된 Server-Side의 XML, XHTML, HTML5 문서를 생성하는 __Java Template Engine__ 이다. 기본적으로 XML Tag 와 속성 형태로 이루어져 있으며, Template을 신속하게 처리하고 Parsed Files의 Intelligent Caching을 통해서 작은 양의 I/O Operation을 가능하게 만들었다.
+
+처음부터 XML 및 Web 표준을 염두해두고 만들어져서 Fully Validating Templates를 생성할 수 있고, 총 여섯 종류의 Template을 Processing할 수 있다.
+
+1. SML
+2. Valid XML
+3. XHTML
+4. Valid XHTML
+5. HTML5
+6. Legacy HTML5
+
+__Thymeleaf의 장점__
+1. Server 상에서 동작을 하지 않아도 된다.
+2. 전체적인 Mark-Up 구조를 흐트리지 않는다.
+3. Text-Editor를 통해서 작업을 하고 해당 내용을 브라우저로 바로 확인 가능 : HTML의 속성(Attribute)를 기반으로 작성되기 때문이다.
+
+뒤에서 진행할 grad_project에서 사용하게될 템플릿 엔진으로 Spring Boot에서 사용이 권장되고 있다.
+
+#### Spring Boot
+
+![Alt Text][springboot_logo]
+
+[Spring Boot 홈페이지 바로가기](https://projects.spring.io/spring-boot/)
+
+Spring Boot는 Spring Framework를 기반으로 기존에 개발자가 직접 해야했던 설정들을 자동화 및 간편화 할 목적으로 만든 Framework이다. Spring Boot의 결과물은 기본적으로 Embedded Tomcat이 포함되어있는 *.jar 형태로 배포되는데, 별도의 Tomcat의 설치 및 설정 없이 실행시킬 수 있다.
+
+Spring Boot의 특징은 다음과 같다.
+1. Maven이나 Gradle 등의 __빌드 Tool__ 사용
+2. 모든 Spring 개발 환경에 __빠르게 접근 가능__
+3. 요구사항을 빠르게 처리할 수 있는 __기본 설정값__
+4. 프로젝트 환경 구축에서 요구되는 기능 외적인 기능 제공
+5. 시작을 위한 XML 기반 설정 및 별도의 코드 요구하지 않음.
+
+__REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 여기에 필요한 DB, View Template을 구성하는데 있어서 __자동 구성__ 을 지원한다. 필요한 Library 의존성을 안전성을 확인한 버전으로 조합해 미리 준비된 구성으로 제공하거나 ```spring-boot-starter``` 를 사용하여 의존성을 자동으로 추가하거나 필요한 기능 유형을 지정하게 된다.
+
+### 3. Tutorial 진행 <a name="i3"/>
+> 프로젝트 진행하기에 앞서 기본 프로젝트를 진행한다. 각자 설치법에 대해서는 설명을 생략한다.
+
+#### 개발 환경 Setting
+
+- Intellij IDEA Ultimate 2017.3.5
+- Maven 3.5.3
+- Java 8+ / Java SDK 1.8+
+
+### 4. Project <a name="i4"/>
 > grad_project에 대한 설명
 
 #### 프로젝트 개요
@@ -86,7 +137,10 @@ RESTful API 개발 원칙
 #### Reference :
 
 - [RESTful Web Service란 무엇인가?](http://kimseunghyun76.tistory.com/18)
+- [Thymeleaf란 무엇인가?](http://krespo.net/152)
 
 
 [rest_rogo]:https://imgur.com/MdxQ1y7.png
 [rest_web_service]:https://imgur.com/NFnX8bt.png
+[thymeleaf_logo]:https://imgur.com/hT5H5WU.png
+[springboot_logo]:https://imgur.com/raBai3u.png
