@@ -9,7 +9,11 @@
 ### 1. What is REST? <a name="i1"/>
 > REST에 대해서 기본 개념을 잡는다.
 
+![Alt Text][rest_rogo]
+
 REST란 __(REpresentational State Transfer)__ 의 약자이다. Network 상에서 Client와 Server 사이의 통신 방식인데, __URL__ 을 이용해서 데이터를 간단하게 요청하는 기능이다. 근래에 들어서 HTTP와 JSON을 함께 사용하여 OPEN API를 구현하는 방법으로 사용된다.
+
+![Alt Text][rest_web_service]
 
 대부분의 OPEN API는 REST 아키텍쳐를 기반으로 설계 및 구현이 되었는데, URI를 이용해서 제어할 자원을 명시하고, HTTP를 이용해서 제어 명령을 하게 된다. 이는 __ROA__ (Resource Oriented Architecture)를 따르는 Web Service Design의 표준이다.
 
@@ -81,3 +85,6 @@ RESTful API 개발 원칙
 
 
 #### Reference :
+
+[rest_rogo]:https://imgur.com/MdxQ1y7.png
+[rest_web_service]:https://imgur.com/NFnX8bt.png
