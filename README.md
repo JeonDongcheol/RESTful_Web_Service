@@ -4,7 +4,7 @@
 #### Index :
 1. [__What is REST?__](#i1)
 2. [__Thymeleaf & Spring Boot__](#i2)
-3. [__Tutorial 진행__] (#i3)
+3. [__Tutorial 진행__](#i3)
 3. [__Project__](#i4)
 
 ### 1. What is REST? <a name="i1"/>
