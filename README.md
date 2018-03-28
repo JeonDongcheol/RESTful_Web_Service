@@ -140,6 +140,9 @@ __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 
 3. __Dependency__ 선택 : 프로젝트에서 사용할 기술들을 선택한다. 본 Tutorial에서는 __RESTful Web Service__ 를 사용할 것이기 때문에 Web에서 Web을 선택하고, Template Engines의 __Thymeleaf__ 를 사용할 것이기 때문에 Thymeleaf를 선택한다. Project를 진행하면서 본인의 사용 기술에 맞추어서 선택을 한다.
 ![Alt Text][start3]
 
+4. Project Name 및 Location 설정 : 프로젝트의 이름과 위치를 지정한다. 개발자들의 기호에 맞게 설정을 진행하면 된다. 이로써 프로젝트 생성이 끝이난다.
+![Alt Text][start4]
+
 #### File Structure
 
 ```
@@ -180,9 +183,6 @@ __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 
 ```
 
 앞으로 File Structure에 대해서는 설명을 생략한다.
-
-4. Project Name 및 Location 설정 : 프로젝트의 이름과 위치를 지정한다. 개발자들의 기호에 맞게 설정을 진행하면 된다. 이로써 프로젝트 생성이 끝이난다.
-![Alt Text][start4]
 
 ### 4. Project <a name="i4"/>
 > grad_project에 대한 설명
