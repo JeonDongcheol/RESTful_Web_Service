@@ -146,7 +146,7 @@ __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 
 #### File Structure
 
 ```
-~/example1
+~/example2
     +- .idea
         +- inspectionProfiles
             +- Project_Default.xml
@@ -183,6 +183,160 @@ __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 
 ```
 
 앞으로 File Structure에 대해서는 설명을 생략한다.
+
+#### pom.xml
+
+Maven Project의 Dependency를 담고있는 ```pom.xml``` 의 소스는 다음과 같다.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.Tutorial</groupId>
+	<artifactId>example1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>example1</name>
+	<description>This is Tutorial Example1.</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
+
+```
+
+먄약에 다른 dependency를 추가하고 싶다면 이곳에서 추가를 진행한다. 
+
+#### __Post.java__
+
+- File Path : example2/src/main/java/com/tutorial/example1/Post.java
+
+- 설명 : 변수들만 선언해주는 Test를 위한 Post 객체이다. id, title, content, created_at, updated_at 변수들로 구성이 되어있고, getter와 setter를 만들어준다.
+
+```java
+package com.tutorial.example1;
+
+import java.util.Date;
+
+public class Post {
+    //변수 선언
+    private long id;
+    private String title;
+    private String content;
+    private Date created_at;
+    private Date updated_at;
+
+    //Getter & Setter
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+}
+
+```
+
+#### PostController.java
+
+- File Path : 전과 동일/PostContoller.java
+
+- 설명 : MVC Pattern의 개발을 위한 Controller를 생성한다. 
+
+```java
+package com.tutorial.example1;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+@EnableAutoConfiguration
+public class PostController {
+    @RequestMapping(value = "/posts/new", method = RequestMethod.GET)
+    public String newPost(Model model) {
+        model.addAttribute("post", new Post());
+        return "new";
+    }
+}
+```
 
 ### 4. Project <a name="i4"/>
 > grad_project에 대한 설명
