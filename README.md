@@ -112,13 +112,77 @@ Spring Boot의 특징은 다음과 같다.
 __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 여기에 필요한 DB, View Template을 구성하는데 있어서 __자동 구성__ 을 지원한다. 필요한 Library 의존성을 안전성을 확인한 버전으로 조합해 미리 준비된 구성으로 제공하거나 ```spring-boot-starter``` 를 사용하여 의존성을 자동으로 추가하거나 필요한 기능 유형을 지정하게 된다.
 
 ### 3. Tutorial 진행 <a name="i3"/>
-> 프로젝트 진행하기에 앞서 기본 프로젝트를 진행한다. 각자 설치법에 대해서는 설명을 생략한다.
+> 프로젝트 진행하기에 앞서 기본 프로젝트를 진행한다. 각자 설치법에 대해서는 설명을 생략한다. 이 Tutorial은 아래 참조의 송영광님의 블로그에서 참조함을 미리 말한다.
+
+#### Reference :
+- [송영광님의 블로그 : IntelliJ에서 SpringBoot 웹 프로젝트 생성하기](http://blog.saltfactory.net/creating-springboot-project-in-intellij/)
 
 #### 개발 환경 Setting
 
-- Intellij IDEA Ultimate 2017.3.5
+- IntelliJ IDEA Ultimate 2017.3.5
 - Maven 3.5.3
 - Java 8+ / Java SDK 1.8+
+
+#### Spring Boot 프로젝트 생성
+
+1. IntelliJ 실행하고 New Project에서 __Spring Initializr__ 를 선택한다.(Project SDK에서 Java SDK Version __1.8__ 이상을 맞춘다.)
+![Alt Text][start1]
+
+2. 다음 내용들에 대한 설정을 진행한다.
+    - __Group__ : Project Name
+    - __Artifact__ : Package Name
+    - __Type__ : Maven / Gradle (여기에서는 Maven Project로 진행)
+    - __Packaging__ : jar / war (Default Setting)
+    - __Java Version__ : 8 이상으로 설정
+    - __Description__ : 프로젝트에 대한 설명(설정하지 않아도 무관)
+    ![Alt Text][start2]
+    
+3. __Dependency__ 선택 : 프로젝트에서 사용할 기술들을 선택한다. 본 Tutorial에서는 __RESTful Web Service__ 를 사용할 것이기 때문에 Web에서 Web을 선택하고, Template Engines의 __Thymeleaf__ 를 사용할 것이기 때문에 Thymeleaf를 선택한다. Project를 진행하면서 본인의 사용 기술에 맞추어서 선택을 한다.
+![Alt Text][start3]
+
+#### File Structure
+
+```
+~/example1
+    +- .idea
+        +- inspectionProfiles
+            +- Project_Default.xml
+        +- libraries
+            +- ...
+        +- compiler.xml
+        ...
+    +- .mvn
+        +- wrapper
+            +- maven-wrapper.jar : maven project를 압축한 ~.jar File
+            +- maven-wrapper.properties : maven project의 속성
+    +- src
+        +- main
+            +- java
+                +- com
+                    +- tutorial
+                        +- example1
+                            +- Example1Application.java : Example1 Project를 실행시켜주는 java File
+            +- resources
+                +- static : 정적 resource를 담고있는 Directory
+                +- templates : 프로젝트 View를 담당하는 Directory
+                +- application.properties
+        +- test
+            +- java
+                +- com
+                    +- tutorial
+                        +- example1
+                            +- Example1ApplicationTest.java
+    +- .gitignore
+    +- example1.iml
+    +- mvnw
+    +- mvnw.cmd
+    +- pom.xml : Maven Project에서 미리 정의된 Dependency를 담고 있는 XML File
+```
+
+앞으로 File Structure에 대해서는 설명을 생략한다.
+
+4. Project Name 및 Location 설정 : 프로젝트의 이름과 위치를 지정한다. 개발자들의 기호에 맞게 설정을 진행하면 된다. 이로써 프로젝트 생성이 끝이난다.
+![Alt Text][start4]
 
 ### 4. Project <a name="i4"/>
 > grad_project에 대한 설명
@@ -144,3 +208,7 @@ __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 
 [rest_web_service]:https://imgur.com/NFnX8bt.png
 [thymeleaf_logo]:https://imgur.com/hT5H5WU.png
 [springboot_logo]:https://imgur.com/raBai3u.png
+[start1]:https://imgur.com/Fekbhun.png
+[start2]:https://imgur.com/I4h0pZp.png
+[start3]:https://imgur.com/ilfaV3s.png
+[start4]:https://imgur.com/tRIdmCq.png
