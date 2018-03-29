@@ -316,7 +316,7 @@ public class Post {
 
 - File Path : 전과 동일/PostContoller.java
 
-- 설명 : MVC Pattern의 개발을 위한 Controller를 생성한다. 
+- 설명 : MVC Pattern의 개발을 위한 __Controller__ 를 생성한다. ```@Controller``` Annotation은 해당 클래스를 Web 요청을 처리하는 Controller로 사용하게 하는 Annotation이다. ```@ㄲ
 
 ```java
 package com.tutorial.example1;
@@ -335,7 +335,54 @@ public class PostController {
         model.addAttribute("post", new Post());
         return "new";
     }
+    
+    @RequestMapping(value = "/posts", method = RequestMethod.POST)
+    public String createPost(@ModelAttribute Post post, Model model) {
+        model.addAttribute("post", post);
+
+        return "show";
+    }
 }
+```
+
+#### new.html
+
+```html
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RestTemplate Demo</title>
+    <meta charset=utf-8”/>
+</head>
+<body>
+<h1>New</h1>
+
+<form action="#" th:action="@{/posts}" th:object="${post}" method="post">
+    <p>title: <input type="text" th:field="*{title}" /></p>
+    <p>content: </p>
+    <p><textarea th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
+```
+
+#### show.html
+
+```html
+<!DOCTYPE HTML>  
+<html xmlns:th="http://www.thymeleaf.org">  
+<head>  
+    <title>RestTemplate Demo</title>
+    <meta charset="utf-8"/>
+</head>  
+<body>  
+<h1>Post</h1>  
+    <p th:text="'title: ' + ${post.title}" />
+    <p th:text="'content: ' + ${post.content}" />
+    <a href="/posts/new">새글 작성하기</a>
+</body>  
+</html> 
 ```
 
 ### 4. Project <a name="i4"/>
