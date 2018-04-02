@@ -117,7 +117,7 @@ Spring Boot로 개발을 진행하면서 __Annotation__ (어노테이션)이라�
 - Annotation의 용도
     1. __문서화__ : 문법적으로 @기호를 사용하여 Package, Class, Properties, Variable 등에 명시할 수 있는데, 이러한 어노테이션이 붙은 소스를 Compile 시에 수집하여 API 문서화할 수 있다. 실질적으로 JavaDoc이라는 좋은 문서화 도구가 있기 때문에 이를 위해 사용하는 비중은 낮다.
     2. __코드 체크__ : Compile 시 에러를 발생시켜 개발자에게 경고를 해서 확인시켜주는 목적으로 사용된다.
-    3. __코드 분석(Meta Data)__ : JEE 설정과 유효성 검사 부분에서 데이터를 위한 데이터, 즉, 메타 데이터의 용도로써 사용된다. 가장 많은 목적으로 사용이 된다.
+    3.  __코드 분석(Meta Data)__ : JEE 설정과 유효성 검사 부분에서 데이터를 위한 데이터, 즉, 메타 데이터의 용도로써 사용된다. 가장 많은 목적으로 사용이 된다.
 
 - Spring Boot 대표 Web MVC Annotation
     1. ```@Controller``` : Client로부터 전달되어진 데이터를 가공하기 위한 Controller 임을 명시한다.
@@ -152,7 +152,13 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 - Maven 3.5.3
 - Java 8+ / Java SDK 1.8+
 
-#### Spring Boot 프로젝트 생성
+#### index :
+1. [Spring Boot 프로젝트 생성](#t1)
+2. [File Structure](#t2)
+3. [소스코드 및 설명](#t3)
+
+
+#### Spring Boot 프로젝트 생성 <a name="t1"/>
 
 1. IntelliJ 실행하고 New Project에서 __Spring Initializr__ 를 선택한다.(Project SDK에서 Java SDK Version __1.8__ 이상을 맞춘다.)
 ![Alt Text][start1]
@@ -172,7 +178,7 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 4. Project Name 및 Location 설정 : 프로젝트의 이름과 위치를 지정한다. 개발자들의 기호에 맞게 설정을 진행하면 된다. 이로써 프로젝트 생성이 끝이난다.
 ![Alt Text][start4]
 
-#### File Structure
+#### File Structure <a name="t2"/>
 
 ```
 ~/example2
@@ -213,9 +219,13 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 
 앞으로 File Structure에 대해서는 설명을 생략한다.
 
-#### pom.xml
+#### 소스코드 및 설명 <a name="t3"/>
 
-Maven Project의 Dependency를 담고있는 ```pom.xml``` 의 소스는 다음과 같다.
+##### pom.xml
+
+- File Path : example2/pom.xml
+
+- 설명 : Maven Project의 Dependency를 담고 있다. 먄약에 다른 dependency를 추가하고 싶다면 이곳에서 추가를 진행한다. 
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -275,9 +285,7 @@ Maven Project의 Dependency를 담고있는 ```pom.xml``` 의 소스는 다음�
 
 ```
 
-먄약에 다른 dependency를 추가하고 싶다면 이곳에서 추가를 진행한다. 
-
-#### __Post.java__
+##### __Post.java__
 
 - File Path : example2/src/main/java/com/tutorial/example1/Post.java
 
@@ -297,51 +305,25 @@ public class Post {
     private Date updated_at;
 
     //Getter & Setter
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
-    public long getId() {
-        return id;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 
-    public String getTitle() {
-        return title;
-    }
+    public Date getCreated_at() { return created_at; }
+    public void setCreated_at(Date created_at) { this.created_at = created_at; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
+    public Date getUpdated_at() { return updated_at; }
+    public void setUpdated_at(Date updated_at) { this.updated_at = updated_at; }
 }
 
 ```
 
-#### PostController.java
+##### PostController.java
 
 - File Path : 전과 동일/PostContoller.java
 
@@ -378,7 +360,7 @@ public class PostController {
 }
 ```
 
-#### new.html
+##### new.html
 
 ```html
 <!DOCTYPE HTML>
@@ -400,7 +382,7 @@ public class PostController {
 </html>
 ```
 
-#### show.html
+##### show.html
 
 ```html
 <!DOCTYPE HTML>  
