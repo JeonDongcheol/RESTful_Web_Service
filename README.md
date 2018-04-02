@@ -117,7 +117,7 @@ Spring Boot로 개발을 진행하면서 __Annotation__ (어노테이션)이라�
 - Annotation의 용도
     1. __문서화__ : 문법적으로 @기호를 사용하여 Package, Class, Properties, Variable 등에 명시할 수 있는데, 이러한 어노테이션이 붙은 소스를 Compile 시에 수집하여 API 문서화할 수 있다. 실질적으로 JavaDoc이라는 좋은 문서화 도구가 있기 때문에 이를 위해 사용하는 비중은 낮다.
     2. __코드 체크__ : Compile 시 에러를 발생시켜 개발자에게 경고를 해서 확인시켜주는 목적으로 사용된다.
-    3. __코드 분석(Meta Data) __ : JEE 설정과 유효성 검사 부분에서 데이터를 위한 데이터, 즉, 메타 데이터의 용도로써 사용된다. 가장 많은 목적으로 사용이 된다.
+    3. __코드 분석(Meta Data)__ : JEE 설정과 유효성 검사 부분에서 데이터를 위한 데이터, 즉, 메타 데이터의 용도로써 사용된다. 가장 많은 목적으로 사용이 된다.
 
 - Spring Boot 대표 Web MVC Annotation
     1. ```@Controller``` : Client로부터 전달되어진 데이터를 가공하기 위한 Controller 임을 명시한다.
