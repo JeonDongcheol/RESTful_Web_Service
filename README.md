@@ -225,7 +225,7 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 
 - File Path : example2/pom.xml
 
-- 설명 : Maven Project의 Dependency를 담고 있다. 먄약에 다른 dependency를 추가하고 싶다면 이곳에서 추가를 진행한다. 
+- 설명 : Maven Project의 Dependency를 담고 있다. 먄약에 다른 dependency를 추가하고 싶다면 이곳에서 추가를 진행한다. Tutorial에서는 Thymeleaf를 사용할 것이기 때문에 Dependency에 Thymeleaf를 추가하였다.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -327,11 +327,15 @@ public class Post {
 
 - File Path : 전과 동일/PostContoller.java
 
-- 설명 : MVC Pattern의 개발을 위한 __Controller__ 를 생성한다.
+- 설명 : MVC Pattern의 개발을 위한 __Controller__ 를 생성한다. 
 
 여기서 ```@EnableAutoConfiguration``` 어노테이션은 Spring Boot의 핵심 어노테이션 중 하나로 __자동 설정__ 을 담당하는 어노테이션이다. 이 어노테이션에는 ```exclude``` 와 ```excludeName``` 이라는 두 가지 속성이 존재한다. 자동 설정을 하고 싶지 않은 클래스가 있다면 이 두 속성을 사용하여 자동 설정에서 제외시킬 수도 있다.
 
 ```@RequestMapping``` 는 Class 레벨인지, Method 레벨인지에 따라서 조금 차이가 있는데 아래의 코드에는 Method 레벨의 어노테이션이다. Method 레벨의 @RequestMapping 은 Method가 __어떤 HTTP 요청을 처리할 것인지__ 명시하는 어노테이션이다. 사용법은 ```@RequestMapping('Path', 'Method', 'Consume', 'Produce')``` 형태로 사용한다. 여기서 __Path__ 는 HTTP URI가 해당 Path 인 것만 처리한다는 의미이다. __Method__ 는 명시한 요청 메소드만 처리한다는 의미이고, __Consume__ 과 __Produce__ 는 생략이 가능한 속성으로 Consume은 요청 헤더에 대한 처리,ㅌ Produce는 응답 헤더에 대한 처리를 뜻한다. 
+
+아래의 코드에서 첫 번째 RequestMapping 어노테이션에서 Path는 "/post/new" 이므로, HTTP URI에 해당 경로를 추가하면 return의 "new"라는 html 페이지를 return한다는 것이다. 예를 들어 ```localhost:8080/post/new``` 로 들어가면 아래 나오게 될 new.html이 나오게 되는 것이다. 그러면서 모델에서는 post라는 이름의 새로운 Post() 객체가 생성이 되는 것이다. 또한 해당 method는 GET 메소드를 처리한다.
+
+두 번째 RequestMapping 어노테이션에서는 "/posts"라는 URI가 추가되면 show라는 html 페이지가 return이 된다. 또한 POST Method를 처리하는 method로 사용된다는 의미이다. 여기서 ```@ModelAttribute``` 어노테이션이 나오는데, 이는 해당 method가 생성한 객체가 __View에 전달__ 된다는 의미의 어노테이션이다. 즉, ```newPost``` 메소드에서 생성한 __post라는 POST 객체__ 가 ```new.html``` 에서 데이터를 담게되고, 그 담긴 객체가 ```createPost``` 에서 파라미터로 가져와서 __show.html에서 View에 추가__ 가 되는 것이다. createPost의 ```model.addAttribute()``` 에서 두 개의 post 중에서 __"post"__ 는 __View에서 post로 정의된 값과 매칭__ 을 하는 것이고, 그 뒤의 __post__ 는 어노테이션을 써서 파라미터로 가져온 __post 객체__ 를 뜻한다.
 
 ```java
 package com.tutorial.example1;
@@ -354,13 +358,16 @@ public class PostController {
     @RequestMapping(value = "/posts", method = RequestMethod.POST)
     public String createPost(@ModelAttribute Post post, Model model) {
         model.addAttribute("post", post);
-
         return "show";
     }
 }
 ```
 
 ##### new.html
+
+- File Path : example2/src/main/resources/templates/new.html
+
+- 설명 : thymeleaf 템플릿 엔진을 사용하기 때문에 html 속성에 thymeleaf를 추가해준다. thymeleaf의 태그 속성에 대해서는 위에서 설명했기 때문에 아래의 코드를 통해서 사용법만 보고 설명은 생략한다.
 
 ```html
 <!DOCTYPE HTML>
@@ -383,6 +390,10 @@ public class PostController {
 ```
 
 ##### show.html
+
+- File Path : example2/src/main/resources/templates/show.html
+
+- 설명 : new.html에서 작성한 내용을 thymeleaf의 태그 속성값을 이용해서 가져온다.(post.title, post.content) ```<a>``` 태그를 사용하여 HTTP URI에 "posts/new"를 붙여 이전 페이지로 이동을 할 수 있다.
 
 ```html
 <!DOCTYPE HTML>  
