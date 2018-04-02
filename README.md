@@ -4,6 +4,7 @@
 #### Index :
 1. [__What is REST?__](#i1)
 2. [__Thymeleaf & Spring Boot__](#i2)
+3. [__MVC Pattern__](#i5)
 3. [__Tutorial 진행__](#i3)
 3. [__Project__](#i4)
 
@@ -111,7 +112,35 @@ Spring Boot의 특징은 다음과 같다.
 
 __REST API__ 서버를 만들거나 __MVC__ 패턴 환경을 만들 때, 혹은 여기에 필요한 DB, View Template을 구성하는데 있어서 __자동 구성__ 을 지원한다. 필요한 Library 의존성을 안전성을 확인한 버전으로 조합해 미리 준비된 구성으로 제공하거나 ```spring-boot-starter``` 를 사용하여 의존성을 자동으로 추가하거나 필요한 기능 유형을 지정하게 된다.
 
-### 3. Tutorial 진행 <a name="i3"/>
+Spring Boot로 개발을 진행하면서 __Annotation__ (어노테이션)이라는 것을 많이 사용하는데, Annotation이란 java 코드에서 주석처럼 사용해 특수한 의미를 부여하는 문법 요소이다. Compile 혹은 Run Time 시에 해석이 된다. _JEE5_ 부터 새롭게 추가되었다. Annotation을 사용하면 기존 Web Application에서는 프로그래밍을 위해서 매번 많은 설정 파일을 작성해야 했고, Domain의 데이터 처리정보가 Model 클래스, Service 클래스, XML 설정 파일에 분산이 되어있어서 처리 정보를 확인하기 위해 모든 설정 파일들을 뒤져야했었다. 하지만 Annotation을 사용함으로써 데이터에 대한 유효성 검사 조건을 Annotation 사용하여 Model 클래스에 직접 명시함으로써 데이터들에 대한 유효 조건을 쉽게 파악할 수 있고 코드의 양도 줄어들게 되었다.
+
+- Annotation의 용도
+    1. __문서화__ : 문법적으로 @기호를 사용하여 Package, Class, Properties, Variable 등에 명시할 수 있는데, 이러한 어노테이션이 붙은 소스를 Compile 시에 수집하여 API 문서화할 수 있다. 실질적으로 JavaDoc이라는 좋은 문서화 도구가 있기 때문에 이를 위해 사용하는 비중은 낮다.
+    2. __코드 체크__ : Compile 시 에러를 발생시켜 개발자에게 경고를 해서 확인시켜주는 목적으로 사용된다.
+    3. __코드 분석(Meta Data) __ : JEE 설정과 유효성 검사 부분에서 데이터를 위한 데이터, 즉, 메타 데이터의 용도로써 사용된다. 가장 많은 목적으로 사용이 된다.
+
+- Spring Boot 대표 Web MVC Annotation
+    1. ```@Controller``` : Client로부터 전달되어진 데이터를 가공하기 위한 Controller 임을 명시한다.
+    2. ```@Repository``` : 해당 Class가 DB에 접근하는 Class임을 명시하는 어노테이션
+    3. ```@Entity``` / ```@Document``` : DB에 Table을 생성하거나 데이터를 가공하기 위한 Class 임을 명시한다.. Entity는 일반적인 DBMS, Document는 MongoDB와 같은 Table 단위가 아닌 Document Type의 DB를 지정한다.
+    4. ```@Service``` : Repository를 통해 DB에서 데이터를 가져온 후 Controller에게 전달해주는 Class 임을 명시한다.
+    
+### 3. MVC Pattern <a name="i5"/>
+> MVC 패턴에 대한 개념 학습
+
+MVC Pattern이란 __Model-View-Controller__ 의 약자로 소프트웨어 디자인 패턴을 말한다. View(UI)로부터 Business Logic을 __분리__ 하여 서로 영향 없이 따로 쉽게 고칠 수 있는 패턴이다. MVC Pattern은 View와 Model 사이에 Controller라는 중간 과정을 두어 Dependency(의존성)을 분리하기 위해서 나타나게 되었다. MVC 패턴의 구성요소는 다음과 같다.
+
+- __Model__ :  View와 Controller 사이에서 전달되는 Data만을 나타내는 단순한 __View Model__ 혹은 Data 및 Data에 대한 작업, 규칙을 가지고 있는 __Domain Model__ 일 수도 있다. Data 변경에 따른 내용을 View를 통해서 Update 한다.
+
+- __View__ : 사용자 눈에 보여지는 부분을 말한다. 시각적인 __디자인__ , __UI__ (User Interface), 사용자의 요청에 따른 __결과물__ 이 표현된다. 화면에 표출되는 방식에 대한 Logic이 들어가야 하며, Model에 의해 Update 된다.
+
+- __Controller__ : View와 Model을 __연결__ 시켜주며, 사용자의 입력을 받아 Model을 조작하는 등 __Data 흐름을 제어하는 역할__ 을 한다. 사용자에게 보여줄 적절한 뷰를 선택하기도 하지만, 직접 View를 Update 하지는 않는다.
+
+MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있지만 대체적으로 다음과 같다.
+
+![Alt Text][mvc_pattern]
+
+### 4. Tutorial 진행 <a name="i3"/>
 > 프로젝트 진행하기에 앞서 기본 프로젝트를 진행한다. 각자 설치법에 대해서는 설명을 생략한다. 이 Tutorial은 아래 참조의 송영광님의 블로그에서 참조함을 미리 말한다.
 
 #### Reference :
@@ -316,7 +345,11 @@ public class Post {
 
 - File Path : 전과 동일/PostContoller.java
 
-- 설명 : MVC Pattern의 개발을 위한 __Controller__ 를 생성한다. ```@Controller``` Annotation은 해당 클래스를 Web 요청을 처리하는 Controller로 사용하게 하는 Annotation이다. ```@ㄲ
+- 설명 : MVC Pattern의 개발을 위한 __Controller__ 를 생성한다.
+
+여기서 ```@EnableAutoConfiguration``` 어노테이션은 Spring Boot의 핵심 어노테이션 중 하나로 __자동 설정__ 을 담당하는 어노테이션이다. 이 어노테이션에는 ```exclude``` 와 ```excludeName``` 이라는 두 가지 속성이 존재한다. 자동 설정을 하고 싶지 않은 클래스가 있다면 이 두 속성을 사용하여 자동 설정에서 제외시킬 수도 있다.
+
+```@RequestMapping``` 는 Class 레벨인지, Method 레벨인지에 따라서 조금 차이가 있는데 아래의 코드에는 Method 레벨의 어노테이션이다. Method 레벨의 @RequestMapping 은 Method가 __어떤 HTTP 요청을 처리할 것인지__ 명시하는 어노테이션이다. 사용법은 ```@RequestMapping('Path', 'Method', 'Consume', 'Produce')``` 형태로 사용한다. 여기서 __Path__ 는 HTTP URI가 해당 Path 인 것만 처리한다는 의미이다. __Method__ 는 명시한 요청 메소드만 처리한다는 의미이고, __Consume__ 과 __Produce__ 는 생략이 가능한 속성으로 Consume은 요청 헤더에 대한 처리,ㅌ Produce는 응답 헤더에 대한 처리를 뜻한다. 
 
 ```java
 package com.tutorial.example1;
@@ -385,10 +418,11 @@ public class PostController {
 </html> 
 ```
 
-### 4. Project <a name="i4"/>
+### 5. Project <a name="i4"/>
 > grad_project에 대한 설명
 
 #### 프로젝트 개요
+
 이 프로젝트는 졸업 프로젝트를 위한 프로젝트이다. 전반적인 시스템은 요식업 중에서 실제 식당을 운영하는 곳을 타겟으로 한 프로젝트이며, __Wating의 간소화__ , __빠른 Table 회전__ , __간편 시스템__ 을 주 목표로 한다. 시스템의 흐름은 다음과 같다.
 
 1. 식당의 Wi-fi를 잡는다.
@@ -403,7 +437,10 @@ public class PostController {
 
 - [RESTful Web Service란 무엇인가?](http://kimseunghyun76.tistory.com/18)
 - [Thymeleaf란 무엇인가?](http://krespo.net/152)
-
+- [MVC Pattern 개념 정리](http://glorymind.tistory.com/entry/MVC-Pattern-%EA%B0%9C%EB%85%90)
+- [Java Annotation - 로그의 노트](http://hiddenviewer.tistory.com/88)
+- [SpringMVC - Annotation을 이용한 Controller, Domain, Service, Repository - 노랭이가](http://yellowh.tistory.com/109)
+- [Spring Web MVC, @Controller Annotation 정리](http://jsonobject.tistory.com/257)
 
 [rest_rogo]:https://imgur.com/MdxQ1y7.png
 [rest_web_service]:https://imgur.com/NFnX8bt.png
@@ -413,3 +450,4 @@ public class PostController {
 [start2]:https://imgur.com/I4h0pZp.png
 [start3]:https://imgur.com/ilfaV3s.png
 [start4]:https://imgur.com/tRIdmCq.png
+[mvc_pattern]:https://imgur.com/r3EspuC.png
