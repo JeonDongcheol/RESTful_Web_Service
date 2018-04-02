@@ -8,12 +8,13 @@
 - Java 8+ / Java SDK 1.8+
 
 #### index :
-1. [Spring Boot 프로젝트 생성](#t1)
-2. [File Structure](#t2)
-3. [소스코드 및 설명](#t3)
+1. [__Spring Boot 프로젝트 생성__](#t1)
+2. [__File Structure__](#t2)
+3. [__소스코드 및 설명__](#t3)
 
 #### Link :
 1. [__기본 개념 다지기__](../README.md)
+2. [__Graduation Project__](../graduation/README.md)
 
 ### Spring Boot 프로젝트 생성 <a name="t1"/>
 
