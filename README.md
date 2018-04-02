@@ -333,7 +333,7 @@ public class Post {
 
 ```@RequestMapping``` 는 Class 레벨인지, Method 레벨인지에 따라서 조금 차이가 있는데 아래의 코드에는 Method 레벨의 어노테이션이다. Method 레벨의 @RequestMapping 은 Method가 __어떤 HTTP 요청을 처리할 것인지__ 명시하는 어노테이션이다. 사용법은 ```@RequestMapping('Path', 'Method', 'Consume', 'Produce')``` 형태로 사용한다. 여기서 __Path__ 는 HTTP URI가 해당 Path 인 것만 처리한다는 의미이다. __Method__ 는 명시한 요청 메소드만 처리한다는 의미이고, __Consume__ 과 __Produce__ 는 생략이 가능한 속성으로 Consume은 요청 헤더에 대한 처리,ㅌ Produce는 응답 헤더에 대한 처리를 뜻한다. 
 
-아래의 코드에서 첫 번째 RequestMapping 어노테이션에서 Path는 "/post/new" 이므로, HTTP URI에 해당 경로를 추가하면 return의 "new"라는 html 페이지를 return한다는 것이다. 예를 들어 ```localhost:8080/post/new``` 로 들어가면 아래 나오게 될 new.html이 나오게 되는 것이다. 그러면서 모델에서는 post라는 이름의 새로운 Post() 객체가 생성이 되는 것이다. 또한 해당 method는 GET 메소드를 처리한다.
+아래의 코드에서 첫 번째 RequestMapping 어노테이션에서 Path는 __"/post/new"__ 이므로, HTTP URI에 해당 경로를 추가하면 __"new"라는 html 페이지를 return__ 한다. 즉, Controller 역할을 하는 Class에서 메소드는 __return 값이 html 파일명__ 이다. 예를 들어 ```localhost:8080/post/new``` 로 들어가면 아래 나오게 될 new.html이 나오게 되는 것이다. 그러면서 모델에서는 post라는 이름의 새로운 Post() 객체가 생성이 되는 것이다. 또한 해당 method는 GET 메소드를 처리한다.
 
 두 번째 RequestMapping 어노테이션에서는 "/posts"라는 URI가 추가되면 show라는 html 페이지가 return이 된다. 또한 POST Method를 처리하는 method로 사용된다는 의미이다. 여기서 ```@ModelAttribute``` 어노테이션이 나오는데, 이는 해당 method가 생성한 객체가 __View에 전달__ 된다는 의미의 어노테이션이다. 즉, ```newPost``` 메소드에서 생성한 __post라는 POST 객체__ 가 ```new.html``` 에서 데이터를 담게되고, 그 담긴 객체가 ```createPost``` 에서 파라미터로 가져와서 __show.html에서 View에 추가__ 가 되는 것이다. createPost의 ```model.addAttribute()``` 에서 두 개의 post 중에서 __"post"__ 는 __View에서 post로 정의된 값과 매칭__ 을 하는 것이고, 그 뒤의 __post__ 는 어노테이션을 써서 파라미터로 가져온 __post 객체__ 를 뜻한다.
 
