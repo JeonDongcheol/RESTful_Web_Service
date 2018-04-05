@@ -1,11 +1,11 @@
 ## RESTful Web Service
 > RESTful Web Service에 대해서 학습한 페이지입니다. 졸업 프로젝트 진행을 위한 스터디입니다.
-
+4
 #### Index :
 1. [__What is REST?__](#i1)
 2. [__Thymeleaf & Spring Boot__](#i2)
 3. [__MVC Pattern__](#i5)
-4. [__Project__](#i4)
+4. [__MongoDB__](#i3)
 
 #### Link :
 1. [__Tutorial__](./example2/README.md)
@@ -143,20 +143,37 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 
 ![Alt Text][mvc_pattern]
 
-### 4. Project <a name="i4"/>
-> grad_project에 대한 설명
+### 4. MongoDB <a name="i3"/>
+> NoSQL과 MongoDB에 대한 내용을 학습한다.
 
-#### 프로젝트 개요
+![Alt Text][mongo_logo]
 
-이 프로젝트는 졸업 프로젝트를 위한 프로젝트이다. 전반적인 시스템은 요식업 중에서 실제 식당을 운영하는 곳을 타겟으로 한 프로젝트이며, __Wating의 간소화__ , __빠른 Table 회전__ , __간편 시스템__ 을 주 목표로 한다. 시스템의 흐름은 다음과 같다.
+#### NoSQL이란?
 
-1. 식당의 Wi-fi를 잡는다.
-2. 자동으로 Web Page에 접속한다.
-3. 예약자의 성함, 전화번호, 일행의 인원 수를 작성 후 주문하기 버튼 클릭
-4. 메뉴 선택 후 결제하기 버튼을 클릭
-5. 결제 진행(현장/현장 결제)
-6. 기다리다가 본인 입장 차례가 오면 테이블 번호를 배정받는다.
-7. 배정을 받으면 테이블에서 기다렸다가 주문 요리를 받는다.
+4차 산업혁명이 나타남에 따라서 대용량 데이터에 대한 처리 능력이 급격하게 요구되었다. 그러면서 기존의 RDBMS (관계형 데이터베이스)는 대용량의 데이터를 처리하는데 있어서 비용과 효율이 좋지가 않다는 것이 화제가 되었고, 이를 해결하기 위해서 등장한 것이 NoSQL이다. NoSQL은 __Not Only SQL__ 의 약자로써 Big Data와 실시간 Web Application 등에 많이 쓰이고 있는 데이터베이스이다.
+
+- NoSQL의 특징
+
+    - __분산 저장__ : 데이터와 트래픽이 증가함에 따라 기존의 수직적 확장이 아니라 장비의 수를 늘리는 __수평적 확장 방식__ 을 뜻한다. __Shard Key__ 를 기준으로 하나의 테이블을 수평 분할하여 서로 다른 클러스터에 분산 저장하고 질의할 수 있다.
+
+    - __Schema-less__ : 데이터 구조를 미리 정의할 필요가 없고 시간이 지나더라도 언제든지 바꿀 수 있다. 데이터베이스가 스키마를 직접 관리하지 않는 것을 의미하지만, 암묵적인 스키마는 여전히 존재한다.
+
+- NoSQL의 장단점
+
+|장점|단점|
+|---|---|
+|특정 용도에 특화|각 솔루션에 대한 이해 필요|
+|여러 서버에 데이터 분산 가능|운영 노하우가 적음|
+|배열 형식의 데이터를 고속으로 처리 가능|버그가 상대적으로 많음|
+|대용량의 모든 데이터 저장 가능|새로운 솔루션이 계속 나와서 지속적인 습득 필요|
+
+- NoSQL Database의 유형
+
+    1. __Document-Oriented Database__ (Document Store) : 테이블 스키마가 정적이지 않고 유동적인 DB. Record(레코드) 마다 다른 스키마를 가질 수 있다. 일반적으로 __JSON, XML__ 과 같은 Document를 이용해 레코드를 저장한다. 따라서 RDBMS와 다르게 Tree 구조를 저장하거나 찾는데 유용하다. - ex) MongoDB, Amazone DynamoDB, CouchBase
+
+    2. __Wide Column Store__ : 많은 수의 동적 열을 보유할 수 있는 DB. 레코드 Row마다 __Key-Value__ 를 가지고 있어서 레코드마다 다른 스키마를 가질 수 있다. 이런 점에서는 Document Store과 많이 유사하지만 기본적인 구현에서는 차이가 있다. 레코드 면에서는 RDBMS와 유사하지만 더 큰 분산처리에 용이하다는 특징이 있다. 그래서 많은 Column과 Data를 저장할 때 유용하지만 Data Scan에는 상대적으로 효율성이 떨어지는 편이다. - ex) Cassandra, HBase, Google Big Table
+
+    3. __Key-Value Store__ : __Key__ 와 __Value__ 로 이루어진 단순한 구조의 DB. 속도가 빠르고 분산 저장 환경이 용이하기 때문에 단순한 구조를 사용한다. 빠른 접근을 위해 메모리를 주로 사용한다. Wide Column과 마찬가지로 접근 속도는 빠르지만 Data Scan에는 약한 편이다. - ex) Redis, Memached, EhCache, Hazelcast
 
 #### Reference :
 
@@ -165,9 +182,12 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 - [MVC Pattern 개념 정리](http://glorymind.tistory.com/entry/MVC-Pattern-%EA%B0%9C%EB%85%90)
 - [Java Annotation - 로그의 노트](http://hiddenviewer.tistory.com/88)
 - [SpringMVC - Annotation을 이용한 Controller, Domain, Service, Repository - 노랭이가](http://yellowh.tistory.com/109)
+- [NoSQL 개념 정리 - 사이버이메지네이션](http://cyberx.tistory.com/163)
+- [DATABASE & NOSQL의 종류 - DEV IMPERFECT](https://inyl.github.io/programming/2017/05/09/database.html)
 
 [rest_rogo]:https://imgur.com/MdxQ1y7.png
 [rest_web_service]:https://imgur.com/NFnX8bt.png
 [thymeleaf_logo]:https://imgur.com/hT5H5WU.png
 [springboot_logo]:https://imgur.com/raBai3u.png
 [mvc_pattern]:https://imgur.com/r3EspuC.png
+[mongo_logo]:https://imgur.com/bOAyRxL.png
