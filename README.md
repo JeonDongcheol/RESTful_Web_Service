@@ -1,6 +1,6 @@
 ## RESTful Web Service
 > RESTful Web Service에 대해서 학습한 페이지입니다. 졸업 프로젝트 진행을 위한 스터디입니다.
-4
+
 #### Index :
 1. [__What is REST?__](#i1)
 2. [__Thymeleaf & Spring Boot__](#i2)
@@ -169,11 +169,11 @@ MVC Pattern의 형태는 개발 방법이다 언어에 따라서 다를 수 있�
 
 - NoSQL Database의 유형
 
-    1. __Document-Oriented Database__ (Document Store) : 테이블 스키마가 정적이지 않고 유동적인 DB. Record(레코드) 마다 다른 스키마를 가질 수 있다. 일반적으로 __JSON, XML__ 과 같은 Document를 이용해 레코드를 저장한다. 따라서 RDBMS와 다르게 Tree 구조를 저장하거나 찾는데 유용하다. - ex) MongoDB, Amazone DynamoDB, CouchBase
+    1. __Document-Oriented Database__ (Document Store) : 테이블 스키마가 정적이지 않고 유동적인 DB. Record(레코드) 마다 다른 스키마를 가질 수 있다. 일반적으로 __JSON, XML__ 과 같은 Document를 이용해 레코드를 저장한다. 따라서 RDBMS와 다르게 Tree 구조를 저장하거나 찾는데 유용하다. __ex) MongoDB, Amazone DynamoDB, CouchBase__
 
-    2. __Wide Column Store__ : 많은 수의 동적 열을 보유할 수 있는 DB. 레코드 Row마다 __Key-Value__ 를 가지고 있어서 레코드마다 다른 스키마를 가질 수 있다. 이런 점에서는 Document Store과 많이 유사하지만 기본적인 구현에서는 차이가 있다. 레코드 면에서는 RDBMS와 유사하지만 더 큰 분산처리에 용이하다는 특징이 있다. 그래서 많은 Column과 Data를 저장할 때 유용하지만 Data Scan에는 상대적으로 효율성이 떨어지는 편이다. - ex) Cassandra, HBase, Google Big Table
+    2. __Wide Column Store__ : 많은 수의 동적 열을 보유할 수 있는 DB. 레코드 Row마다 __Key-Value__ 를 가지고 있어서 레코드마다 다른 스키마를 가질 수 있다. 이런 점에서는 Document Store과 많이 유사하지만 기본적인 구현에서는 차이가 있다. 레코드 면에서는 RDBMS와 유사하지만 더 큰 분산처리에 용이하다는 특징이 있다. 그래서 많은 Column과 Data를 저장할 때 유용하지만 Data Scan에는 상대적으로 효율성이 떨어지는 편이다. __ex) Cassandra, HBase, Google Big Table__
 
-    3. __Key-Value Store__ : __Key__ 와 __Value__ 로 이루어진 단순한 구조의 DB. 속도가 빠르고 분산 저장 환경이 용이하기 때문에 단순한 구조를 사용한다. 빠른 접근을 위해 메모리를 주로 사용한다. Wide Column과 마찬가지로 접근 속도는 빠르지만 Data Scan에는 약한 편이다. - ex) Redis, Memached, EhCache, Hazelcast
+    3. __Key-Value Store__ : __Key__ 와 __Value__ 로 이루어진 단순한 구조의 DB. 속도가 빠르고 분산 저장 환경이 용이하기 때문에 단순한 구조를 사용한다. 빠른 접근을 위해 메모리를 주로 사용한다. Wide Column과 마찬가지로 접근 속도는 빠르지만 Data Scan에는 약한 편이다. __ex) Redis, Memached, EhCache, Hazelcast__
 
 #### Reference :
 
