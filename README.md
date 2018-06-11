@@ -9,7 +9,7 @@
 
 #### Link :
 1. [__Tutorial__](./example2/README.md)
-2. [__Graduation Project__](./graduation/graduation.md)
+2. [__Graduation Project__](./graduation/README.md)
 
 ### 1. What is REST? <a name="i1"/>
 > REST에 대한 기본 개념을 학습한다.
